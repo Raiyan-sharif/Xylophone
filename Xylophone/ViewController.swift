@@ -15,16 +15,14 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-    var i:Int = 0
-    var Buttonarray = ["C","D","E","F","G","A","B"]
+    
     @IBAction func keyPressed(_ sender: UIButton) {
-        print(sender.tag)
-        i = sender.tag
-        playSound()
+        print(sender.currentTitle)
+        playSound(data: sender.currentTitle!)
     }
     
-    func playSound() {
-        let url = Bundle.main.url(forResource: Buttonarray[i], withExtension: "wav")
+    func playSound(data: String)-> Void {
+        let url = Bundle.main.url(forResource: data, withExtension: "wav")
         player = try! AVAudioPlayer(contentsOf: url!)
         player?.play()
         
